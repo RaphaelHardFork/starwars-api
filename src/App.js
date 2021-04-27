@@ -2,20 +2,25 @@ import './App.css';
 import "bootstrap/dist/css/bootstrap.css"
 import { useState } from 'react'
 
-import PlanetList from './components/PlanetList'
-import DataFetcher from './components/DataFetcher'
+import StarwarsApp from './components/StarwarsApp'
 
-function App() {
-  const [list, setList] = useState([])
-  const [planets, setPlanets] = useState([])
-  const [next, setNext] = useState('')
+const App = () => {
+  const [url, setUrl] = useState(`https://swapi.dev/api/planets/`)
+  const [pageData, setPageData] = useState([])
+  const [pageUrl, setPageUrl] = useState('')
+
+  const handleClickMore = () => {
+    setUrl(pageUrl)
+  }
+
   return (
     <div className="container">
-      <h1 className="display-1 text-center">Planète dans l'univers Star Wars</h1>
-      <DataFetcher next={next} setNext={setNext} planets={planets} setPlanets={setPlanets} />
-      <PlanetList list={list} setList={setList} planets={planets} />
-    </div>
+      <h1 className="display-1 text-center my-3">Planète dans l'univers Star Wars</h1>
+      <StarwarsApp setPageUrl={setPageUrl} pageUrl={pageUrl} setPageData={setPageData} pageData={pageData} setUrl={setUrl} url={url} />
+      <button disabled={pageUrl === null} onClick={handleClickMore} className="btn">Voir plus</button>
+    </div>    /*DISABLED*/
   )
 }
+
 
 export default App;

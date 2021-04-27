@@ -2,3 +2,10 @@
   --text:'Coustard', serif;
   --titre:'Geostar Fill', cursive;
 }
+
+body h1{
+  font-family: var(--titre);
+}
+body h2,p,li{
+  font-family: var(--text);
+}

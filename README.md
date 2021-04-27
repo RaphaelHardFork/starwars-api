@@ -8,3 +8,6 @@ https://swapi.dev/
 ## A faire
 - Design du site (bootstrap)
 - Faire pareil pour les personnages & vaisseaux
+
+## Piste
+- Variable URL qui modifie les données
