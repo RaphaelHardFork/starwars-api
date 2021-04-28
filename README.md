@@ -1,13 +1,13 @@
 # StarWars API
 https://swapi.dev/
 
-## Problème :
-- Utilisation du spread pour un tableau d'objet
-- actualisation de la recherche avec l'objet next contenant l'URL de la page suivant
+[Visite le site 🖖](https://starwars-api-use.netlify.app/)
+
+## Problème
+- Requête http à un problème "requested an insecure resource"
 
 ## A faire
-- Design du site (bootstrap)
-- Faire pareil pour les personnages & vaisseaux
-
-## Piste
-- Variable URL qui modifie les données
+- enlever le mode DEBUG (voir les données)
+- Couleur & taille planètes
+- Ajouter des boutons pour aller dans personnages & vaisseaux
+- Modal pour chaque unique vaisseau / perso / planet
