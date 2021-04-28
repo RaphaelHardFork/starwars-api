@@ -2,9 +2,13 @@
   --text:'Coustard', serif;
   --titre:'Geostar Fill', cursive;
 }
-
+body{
+  background-image: url('./stars.jpg');
+  background-attachment: fixed;
+}
 body h1{
   font-family: var(--titre);
+  color:gold;
 }
 body h2,p,li{
   font-family: var(--text);

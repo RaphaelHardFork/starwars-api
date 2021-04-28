@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { style, gridS, planetColor } from '../style'
 
 const StarwarsApp = (props) => {
   const { url, pageData, setPageData, setPageUrl } = props
@@ -7,54 +8,38 @@ const StarwarsApp = (props) => {
     fetch(url).then((response) => {
       return response.json()
     }).then((data) => {
-      // A revoir
-      if (pageData.length === 0) {
-        setPageData(data.results)
-      } else {
-        for (let elem of data.results) {
-          pageData.push(elem)
-        }
-        setPageUrl(pageData)
+      for (let elem of data.results) {
+        pageData.push(elem)
       }
-      if (data.next === null) {
-        alert('Fin de la liste')
-      } else {
-        setPageUrl(data.next)
-      }
+      setPageData(() => pageData)
+      setPageUrl(() => data.next)
     }).catch((e) => {
       alert(e.message)
     })
+    // Problème de "missing dependencies"
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url])
-  // style
-  const style = {
-    backgroundColor: '#AA8888'
-  }
-  const gridS = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit,minmax(200px,300px))",
-    gridGap: "2rem"
-  }
+
+
   return <ul style={gridS} className="row justify-content-between ps-0">
     {pageData.map((elem) => {
       return (
-        <div class="card shadow mb-3 " style={style}>
-          <div class="card-body">
-            <h2 class="card-title text-center">{elem.name}</h2>
-            <p className="card-text">{elem.diameter}</p>
+        <div key={elem.name} className="card shadow" style={style}>
+          <div className="card-body">
+            <h2 className="card-title text-center">{elem.name}</h2>
+            <div
+              className="card-gradient rounded-pill mx-auto"
+              style={{ backgroundImage: planetColor(elem.terrain.split(',')[0]), height: "3rem", width: "3rem" }}
+            ></div>
           </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Climat : {elem.climate}</li>
-            <li class="list-group-item">Population : {elem.population}</li>
-            <li class="list-group-item">Terrain : {elem.terrain}</li>
-
+          <ul className="list-group list-group-flush rounded">
+            <li className="list-group-item">Climat : {elem.climate}</li>
+            <li className="list-group-item">Population : {elem.population}</li>
+            <li className="list-group-item">Terrain : {elem.terrain}</li>
           </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+          <div className="card-body">
           </div>
         </div>
-
-
       )
     })}
   </ul>

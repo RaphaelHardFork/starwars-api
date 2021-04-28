@@ -12,13 +12,21 @@ const App = () => {
   const handleClickMore = () => {
     setUrl(pageUrl)
   }
+  /* FONCTION DEBUG*/
+  const handleClickData = () => {
+    console.log(`url: ${url}`)
+    console.log(`pageUrl: ${pageUrl}(next)`)
+    console.log(pageData)
+  }
 
   return (
     <div className="container">
       <h1 className="display-1 text-center my-3">Planète dans l'univers Star Wars</h1>
       <StarwarsApp setPageUrl={setPageUrl} pageUrl={pageUrl} setPageData={setPageData} pageData={pageData} setUrl={setUrl} url={url} />
-      <button disabled={pageUrl === null} onClick={handleClickMore} className="btn">Voir plus</button>
-    </div>    /*DISABLED*/
+      <button disabled={pageUrl === null} onClick={handleClickMore} className="btn btn-info mb-5">Voir plus</button>
+      <button onClick={handleClickData} className="btn btn-info mb-5">Voir les données</button>
+
+    </div>
   )
 }
 
