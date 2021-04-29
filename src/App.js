@@ -24,8 +24,7 @@ const App = () => {
       <h1 className="display-1 text-center my-3">Planète dans l'univers Star Wars</h1>
       <StarwarsApp setPageUrl={setPageUrl} pageUrl={pageUrl} setPageData={setPageData} pageData={pageData} setUrl={setUrl} url={url} />
       <button disabled={pageUrl === null} onClick={handleClickMore} className="btn btn-info mb-5">Voir plus</button>
-      <button onClick={handleClickData} className="btn btn-info mb-5">Voir les données</button>
-
+      <button onClick={handleClickData} className="btn btn-info ms-2 mb-5">Voir les données (console)</button>
     </div>
   )
 }

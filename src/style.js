@@ -1,6 +1,6 @@
 // STYLE
 const style = {
-  backgroundColor: '#AA8888'
+  backgroundColor: '#AA8888',
 }
 const gridS = {
   display: "grid",

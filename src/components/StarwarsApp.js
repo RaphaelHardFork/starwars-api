@@ -12,7 +12,14 @@ const StarwarsApp = (props) => {
         pageData.push(elem)
       }
       setPageData(() => pageData)
-      setPageUrl(() => data.next)
+      // Problème de l'url http => https
+      if (data.next !== null) {
+        let url = data.next.split('')
+        url[3] = 'ps'
+        setPageUrl(() => url.join(''))
+      } else {
+        setPageUrl(() => data.next)
+      }
     }).catch((e) => {
       alert(e.message)
     })
@@ -21,7 +28,7 @@ const StarwarsApp = (props) => {
   }, [url])
 
 
-  return <ul style={gridS} className="row justify-content-between ps-0">
+  return <div style={gridS} className="justify-content-between mb-5">
     {pageData.map((elem) => {
       return (
         <div key={elem.name} className="card shadow" style={style}>
@@ -42,7 +49,7 @@ const StarwarsApp = (props) => {
         </div>
       )
     })}
-  </ul>
+  </div>
 }
 
 export default StarwarsApp
